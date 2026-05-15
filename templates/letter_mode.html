@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Тренировка буквы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/letter_mode.css') }}">
+</head>
+<body>
+    <div class="container letter-mode">
+        <div class="header">
+            <h1>📝 Тренировка</h1>
+            <div class="target-letter" id="targetLetter"></div>
+        </div>
+        
+        <div class="sample">
+            <div class="sample-letter" id="sampleLetter"></div>
+        </div>
+        
+        <div class="canvas-container">
+            <canvas id="drawCanvas" width="280" height="280"></canvas>
+        </div>
+        
+        <div class="attempt-counter">
+            Попытка: <span id="attemptCount">1</span> / 10
+        </div>
+        
+        <div class="controls">
+            <button class="action-btn" id="checkBtn">CHECK</button>
+            <button class="action-btn grid-btn" id="clearBtn">CLEAR</button>
+            <button class="action-btn exit-btn" id="exitBtn">EXIT</button>
+        </div>
+        
+        <div class="score-area">
+            SCORE: <span class="score-value" id="scoreValue">0</span>%
+        </div>
+        
+        <div class="result-verdict" id="resultVerdict" style="display: none;"></div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/letter_mode.js') }}"></script>
+</body>
+</html>

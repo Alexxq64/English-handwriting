@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Обучение английскому алфавиту и цифрам</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 English Alphabet & Numbers</h1>
+        
+        <div class="section">
+            <div class="section-title">🔢 Цифры</div>
+            <div class="digits-grid" id="digitsGrid"></div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🔤 Буквы</div>
+            <div class="alphabet-grid" id="alphabetGrid"></div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">🎯 Слова</div>
+            <div class="test-buttons">
+                <button class="test-btn" data-test="1">Тест 1 (2-3 буквы)</button>
+                <button class="test-btn" data-test="2">Тест 2 (4-5 букв)</button>
+                <button class="test-btn" data-test="3">Тест 3 (6-7 букв)</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Напиши букву или цифру пальцем или мышкой | Белое на чёрном
+        </div>
+    </div>
+    
+    <script>
+        const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+        
+        const letters = [
+            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+        ];
+        
+        const digitsGrid = document.getElementById('digitsGrid');
+        digits.forEach(digit => {
+            const btn = document.createElement('button');
+            btn.className = 'digit-btn';
+            btn.textContent = digit;
+            btn.onclick = () => {
+                window.location.href = `/letter/${digit}`;
+            };
+            digitsGrid.appendChild(btn);
+        });
+        
+        const grid = document.getElementById('alphabetGrid');
+        letters.forEach(letter => {
+            const btn = document.createElement('button');
+            btn.className = 'letter-btn';
+            btn.textContent = letter;
+            btn.onclick = () => {
+                window.location.href = `/letter/${letter}`;
+            };
+            grid.appendChild(btn);
+        });
+        
+        document.querySelectorAll('.test-btn').forEach(btn => {
+            btn.onclick = () => {
+                const level = btn.getAttribute('data-test');
+                window.location.href = `/test/${level}`;
+            };
+        });
+    </script>
+</body>
+</html>
