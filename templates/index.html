@@ -26,6 +26,7 @@
                 <button class="test-btn" data-test="1">Тест 1 (2-3 буквы)</button>
                 <button class="test-btn" data-test="2">Тест 2 (4-5 букв)</button>
                 <button class="test-btn" data-test="3">Тест 3 (6-7 букв)</button>
+                <button class="test-btn manual-test-btn" id="manualTestBtn">✏️ Ручной тест</button>                
             </div>
         </div>
         
@@ -72,6 +73,11 @@
                 window.location.href = `/test/${level}`;
             };
         });
+
+        document.getElementById('manualTestBtn').addEventListener('click', () => {
+            window.location.href = '/manual_test';
+        });
+        
     </script>
 </body>
 </html>

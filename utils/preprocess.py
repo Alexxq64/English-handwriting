@@ -24,6 +24,7 @@ def preprocess_from_canvas(image_bytes, img_size=28):
     coords = cv2.findNonZero(thresh)
     if coords is not None:
         x, y, w, h = cv2.boundingRect(coords)
+        original_h = h  # сохраняем исходную высоту для адаптивного утолщения
         image = image[y:y+h, x:x+w]
     else:
         # Пустой холст
@@ -53,9 +54,14 @@ def preprocess_from_canvas(image_bytes, img_size=28):
         )
 
     # 5. Resize до 28×28
-    image = cv2.resize(image, (img_size, img_size), interpolation=cv2.INTER_AREA)
+    image = cv2.resize(image, (img_size, img_size), interpolation=cv2.INTER_LINEAR)
 
-    # 6. Нормализация
+    # 6. Лёгкое утолщение для сильно сжатых букв (проверка гипотезы)
+    if original_h > 100:
+        kernel = np.ones((2, 2), np.uint8)
+        image = cv2.dilate(image, kernel, iterations=1)
+
+    # 7. Нормализация
     image = image.astype('float32') / 255.0
 
     return image.reshape(1, img_size, img_size, 1)

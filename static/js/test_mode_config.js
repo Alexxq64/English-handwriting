@@ -1,19 +1,12 @@
 // static/js/test_mode_config.js
 export const WORDS_BY_LEVEL = {
-    1: ["cat", "dog", "sun", "car", "bus", "hat", "leg", "eye", "cup", "bag",
-        "ant", "bed", "box", "fox", "hen", "pig", "rat", "pen", "red"],
-    2: ["house", "mouse", "apple", "table", "chair", "door", "bird", "fish",
-        "horse", "duck", "frog", "star", "moon", "sweet", "happy", "bread", "water", "light"],
-    3: ["pencil", "teacher", "garden", "brother", "sister", "morning", "evening",
-        "dinner", "bicycle", "blanket", "picture", "project", "student", "monster",
-        "kitchen", "weather", "library"]
-    // 1: ["CAT", "DOG", "SUN", "CAR", "BUS", "HAT", "LEG", "EYE", "CUP", "BAG",
-    //     "ANT", "BED", "BOX", "FOX", "HEN", "PIG", "RAT", "PEN", "RED"],
-    // 2: ["HOUSE", "MOUSE", "APPLE", "TABLE", "CHAIR", "DOOR", "BIRD", "FISH",
-    //     "HORSE", "DUCK", "FROG", "STAR", "MOON", "SWEET", "HAPPY", "BREAD", "WATER", "LIGHT"],
-    // 3: ["PENCIL", "TEACHER", "GARDEN", "BROTHER", "SISTER", "MORNING", "EVENING",
-    //     "DINNER", "BICYCLE", "BLANKET", "PICTURE", "PROJECT", "STUDENT", "MONSTER",
-    //     "KITCHEN", "WEATHER", "LIBRARY"]    
+    1: ["Cat", "Dog", "Sun", "Car", "Bus", "Hat", "Leg", "Eye", "Cup", "Bag",
+        "Ant", "Bed", "Box", "Fox", "Hen", "Pig", "Rat", "Pen", "Red"],
+    2: ["House", "Mouse", "Apple", "Table", "Chair", "Door", "Bird", "Fish",
+        "Horse", "Duck", "Frog", "Star", "Moon", "Sweet", "Happy", "Bread", "Water", "Light"],
+    3: ["Pencil", "Teacher", "Garden", "Brother", "Sister", "Morning", "Evening",
+        "Dinner", "Bicycle", "Blanket", "Picture", "Project", "Student", "Monster",
+        "Kitchen", "Weather", "Library"]
 };
 
 export const LINES = {

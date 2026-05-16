@@ -193,7 +193,22 @@ document.getElementById('checkBtn').addEventListener('click', async () => {
         } else {
             scores.push(result.score);
             document.getElementById('scoreValue').textContent = result.score;
-            console.log(`Распознано: ${result.predicted}, Правильно: ${result.correct}, SCORE: ${result.score}%`);
+            
+            // Вывод в консоль браузера
+            console.log(`=== РЕЗУЛЬТАТ РАСПОЗНАВАНИЯ ===`);
+            console.log(`Целевая буква: ${letter}`);
+            console.log(`Распознано: ${result.predicted}`);
+            console.log(`Уверенность: ${result.score}%`);
+            console.log(`Правильно: ${result.correct}`);
+            console.log(`Вердикт: ${result.verdict}`);
+            
+            if (result.top_predictions) {
+                console.log(`Топ-3 предсказания модели:`);
+                for (let i = 0; i < result.top_predictions.length; i++) {
+                    console.log(`  ${i+1}. ${result.top_predictions[i][0]}: ${result.top_predictions[i][1].toFixed(1)}%`);
+                }
+            }
+            console.log(`================================`);
         }
     } catch (error) {
         console.error('Ошибка запроса:', error);

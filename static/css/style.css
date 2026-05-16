@@ -115,6 +115,14 @@ h1 {
     transform: scale(1.05);
 }
 
+.manual-test-btn {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+}
+
+.manual-test-btn:hover {
+    transform: scale(1.05);
+}
+
 .footer {
     text-align: center;
     margin-top: 20px;
