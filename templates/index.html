@@ -3,81 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Обучение английскому алфавиту и цифрам</title>
+    <title>ABCool</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <div class="container">
-        <h1>📝 English Alphabet & Numbers</h1>
-        
-        <div class="section">
-            <div class="section-title">🔢 Цифры</div>
-            <div class="digits-grid" id="digitsGrid"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-title">🔤 Буквы</div>
-            <div class="alphabet-grid" id="alphabetGrid"></div>
-        </div>
-        
-        <div class="section">
-            <div class="section-title">🎯 Слова</div>
-            <div class="test-buttons">
-                <button class="test-btn" data-test="1">Тест 1 (2-3 буквы)</button>
-                <button class="test-btn" data-test="2">Тест 2 (4-5 букв)</button>
-                <button class="test-btn" data-test="3">Тест 3 (6-7 букв)</button>
-                <button class="test-btn manual-test-btn" id="manualTestBtn">✏️ Ручной тест</button>                
-            </div>
-        </div>
-        
-        <div class="footer">
-            Напиши букву или цифру пальцем или мышкой | Белое на чёрном
-        </div>
-    </div>
-    
-    <script>
-        const digits = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
-        
-        const letters = [
-            'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-            'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-            'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
-            'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-        ];
-        
-        const digitsGrid = document.getElementById('digitsGrid');
-        digits.forEach(digit => {
-            const btn = document.createElement('button');
-            btn.className = 'digit-btn';
-            btn.textContent = digit;
-            btn.onclick = () => {
-                window.location.href = `/letter/${digit}`;
-            };
-            digitsGrid.appendChild(btn);
-        });
-        
-        const grid = document.getElementById('alphabetGrid');
-        letters.forEach(letter => {
-            const btn = document.createElement('button');
-            btn.className = 'letter-btn';
-            btn.textContent = letter;
-            btn.onclick = () => {
-                window.location.href = `/letter/${letter}`;
-            };
-            grid.appendChild(btn);
-        });
-        
-        document.querySelectorAll('.test-btn').forEach(btn => {
-            btn.onclick = () => {
-                const level = btn.getAttribute('data-test');
-                window.location.href = `/test/${level}`;
-            };
-        });
 
-        document.getElementById('manualTestBtn').addEventListener('click', () => {
-            window.location.href = '/manual_test';
+<div class="page">
+
+    <div class="header">
+        ABCool
+        <a href="/best_attempts" class="best-link">🏆 Лучшие попытки</a>
+    </div>
+
+    <div class="content">
+
+        <!-- LEFT -->
+        <div class="letters-section">
+
+            <div class="letters-column">
+                <button class="letter-btn" data-symbol="Aa">Aa</button>
+                <button class="letter-btn" data-symbol="Dd">Dd</button>
+                <button class="letter-btn" data-symbol="Gg">Gg</button>
+                <button class="letter-btn" data-symbol="Jj">Jj</button>
+                <button class="letter-btn" data-symbol="Mm">Mm</button>
+                <button class="letter-btn" data-symbol="Pp">Pp</button>
+                <button class="letter-btn" data-symbol="Ss">Ss</button>
+                <button class="letter-btn" data-symbol="Vv">Vv</button>
+                <button class="letter-btn" data-symbol="Yy">Yy</button>
+            </div>
+
+            <div class="letters-column">
+                <button class="letter-btn" data-symbol="Bb">Bb</button>
+                <button class="letter-btn" data-symbol="Ee">Ee</button>
+                <button class="letter-btn" data-symbol="Hh">Hh</button>
+                <button class="letter-btn" data-symbol="Kk">Kk</button>
+                <button class="letter-btn" data-symbol="Nn">Nn</button>
+                <button class="letter-btn" data-symbol="Qq">Qq</button>
+                <button class="letter-btn" data-symbol="Tt">Tt</button>
+                <button class="letter-btn" data-symbol="Ww">Ww</button>
+                <button class="letter-btn" data-symbol="Zz">Zz</button>
+            </div>
+
+            <div class="letters-column">
+                <button class="letter-btn" data-symbol="Cc">Cc</button>
+                <button class="letter-btn" data-symbol="Ff">Ff</button>
+                <button class="letter-btn" data-symbol="Ii">Ii</button>
+                <button class="letter-btn" data-symbol="Ll">Ll</button>
+                <button class="letter-btn" data-symbol="Oo">Oo</button>
+                <button class="letter-btn" data-symbol="Rr">Rr</button>
+                <button class="letter-btn" data-symbol="Uu">Uu</button>
+                <button class="letter-btn" data-symbol="Xx">Xx</button>
+                <button class="letter-btn digits-btn" data-symbol="digits">0-9</button>
+            </div>
+
+        </div>
+
+        <!-- RIGHT -->
+        <div class="tests-section">
+
+            <div class="podium">
+                <div class="podium-side"><button class="test-btn" data-test="2">2</button></div>
+                <div class="podium-center"><button class="test-btn" data-test="1">1</button></div>
+                <div class="podium-side"><button class="test-btn" data-test="3">3</button></div>
+            </div>
+
+            <div class="test-skills">TEST YOUR SKILLS</div>
+
+            <div class="descriptions">
+                <div>
+                    <h3>Блок тестовых заданий</h3>
+                    <p>3 уровня сложности, 10 попыток, рандомные слова.</p>
+                </div>
+
+                <div>
+                    <h3>Блок заданий для букв</h3>
+                    <p>Строчные и прописные буквы, цифры, 10 попыток.</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // КНОПКА ЦИФР 0-9
+    document.querySelector('.digits-btn').addEventListener('click', () => {
+        window.location.href = '/letter/digits';
+    });
+
+    // КНОПКИ БУКВ (Aa, Bb, Cc...)
+    document.querySelectorAll('.letter-btn:not(.digits-btn)').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const symbol = btn.getAttribute('data-symbol');
+            window.location.href = `/letter/${symbol[0]}?mode=letters`;
         });
-        
-    </script>
+    });
+
+    // КНОПКИ ТЕСТОВ НА ПЬЕДЕСТАЛЕ
+    document.querySelectorAll('.test-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const testLevel = btn.getAttribute('data-test');
+            window.location.href = `/test/${testLevel}`;
+        });
+    });
+</script>
+
 </body>
 </html>

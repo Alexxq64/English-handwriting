@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABCool - Лучшие попытки</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/best_attempts.css') }}">
+</head>
+<body>
+    <div class="best-container">
+        <div class="best-header">
+            <a href="/" class="back-link">← На главную</a>
+            <h1 class="page-title">🏆 Лучшие образцы</h1>
+        </div>
+
+        {% include 'best_attempts_summary.html' %}
+        {% include 'best_attempts_table.html' %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/best_attempts.js') }}"></script>
+</body>
+</html>

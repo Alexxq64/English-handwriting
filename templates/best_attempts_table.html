@@ -1,0 +1,80 @@
+<!-- ОБЩАЯ ТАБЛИЦА -->
+<h2 class="table-title">Все символы</h2>
+<table class="best-table" id="allTable">
+    <thead>
+        <tr>
+            <th class="col-symbol">Символ</th>
+            <th colspan="3">Лучшие попытки</th>
+            <th class="col-errors">Частые ошибки</th>
+        </tr>
+    </thead>
+    <tbody>
+        {# Буквы #}
+        {% for letter, data in storage.letters.items()|sort %}
+            {% for case in ['upper', 'lower'] %}
+                {% if case in data and data[case].best|length > 0 %}
+                <tr>
+                    <td class="symbol-cell" style="cursor: pointer;" onclick="location.href='/letter/{{ letter if case == 'upper' else letter.lower() }}?exact={{ letter if case == 'upper' else letter.lower() }}&from=best'">
+                        <strong>{{ letter if case == 'upper' else letter.lower() }}</strong>
+                    </td>
+                    {% set best_list = data[case].best %}
+                    {% for i in range(3) %}
+                        <td class="sample-cell" data-score="{{ best_list[i].score if best_list[i] else 0 }}">
+                            {% if best_list[i] %}
+                                <div class="sample-horizontal" style="cursor: pointer;" onclick="location.href='/letter/{{ letter if case == 'upper' else letter.lower() }}?exact={{ letter if case == 'upper' else letter.lower() }}&from=best'">
+                                    <img src="{{ best_list[i].image }}" width="80" height="80" class="sample-img">
+                                    <span class="sample-score">{{ best_list[i].score }}%</span>
+                                </div>
+                            {% else %}
+                                <div class="sample-empty">—</div>
+                            {% endif %}
+                        </td>
+                    {% endfor %}
+                    <td class="confusion-cell" style="cursor: pointer;" data-max-errors="{{ data[case].max_error_count }}" onclick="location.href='/letter/{{ letter if case == 'upper' else letter.lower() }}?exact={{ letter if case == 'upper' else letter.lower() }}&from=best'">
+                        {% if data[case].confusion and data[case].confusion|length > 0 %}
+                            {% set sorted_confusion = data[case].confusion.items()|list|sort(attribute='1', reverse=true) %}
+                            {% for pred, count in sorted_confusion[:3] %}
+                                <span class="confusion-tag">{{ pred }}: {{ count }}</span>
+                            {% endfor %}
+                        {% else %}
+                            <span class="no-errors">👍 нет ошибок</span>
+                        {% endif %}
+                    </td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        
+        {# Цифры #}
+        {% for digit, data in storage.digits.items()|sort %}
+            <tr>
+                <td class="symbol-cell" style="cursor: pointer;" onclick="location.href='/letter/{{ digit }}?exact={{ digit }}&from=best'">
+                    <strong>{{ digit }}</strong>
+                </td>
+                {% set best_list = data.best %}
+                {% for i in range(3) %}
+                    <td class="sample-cell" data-score="{{ best_list[i].score if best_list[i] else 0 }}">
+                        {% if best_list[i] %}
+                            <div class="sample-horizontal" style="cursor: pointer;" onclick="location.href='/letter/{{ digit }}?exact={{ digit }}&from=best'">
+                                <img src="{{ best_list[i].image }}" width="80" height="80" class="sample-img">
+                                <span class="sample-score">{{ best_list[i].score }}%</span>
+                            </div>
+                        {% else %}
+                            <div class="sample-empty">—</div>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                <td class="confusion-cell" style="cursor: pointer;" data-max-errors="{{ data.max_error_count }}" onclick="location.href='/letter/{{ digit }}?exact={{ digit }}&from=best'">
+                    {% if data.confusion and data.confusion|length > 0 %}
+                        {% set sorted_confusion = data.confusion.items()|list|sort(attribute='1', reverse=true) %}
+                        {% for pred, count in sorted_confusion[:3] %}
+                            <span class="confusion-tag">{{ pred }}: {{ count }}</span>
+                        {% endfor %}
+                    {% else %}
+                        <span class="no-errors">👍 нет ошибок</span>
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>

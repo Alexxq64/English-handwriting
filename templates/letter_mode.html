@@ -9,21 +9,17 @@
 </head>
 <body>
     <div class="container letter-mode">
-        <div class="header">
-            <h1>📝 Тренировка</h1>
-            <div class="target-letter" id="targetLetter"></div>
+        <!-- Первая строка: Тренировка A/a -->
+        <div class="training-title" id="trainingTitle"></div>
+        
+        <!-- Образец с линиями (подсказка) -->
+        <div class="sample-with-lines">
+            <canvas id="sampleCanvas" width="140" height="140"></canvas>
         </div>
         
-        <div class="sample">
-            <div class="sample-letter" id="sampleLetter"></div>
-        </div>
-        
+        <!-- Холст для рисования -->
         <div class="canvas-container">
             <canvas id="drawCanvas" width="280" height="280"></canvas>
-        </div>
-        
-        <div class="attempt-counter">
-            Попытка: <span id="attemptCount">1</span> / 10
         </div>
         
         <div class="controls">
@@ -32,13 +28,23 @@
             <button class="action-btn exit-btn" id="exitBtn">EXIT</button>
         </div>
         
-        <div class="score-area">
+        <div class="attempt-counter">
+            Попытка: <span id="attemptCount">1</span> / 10
+        </div>
+        
+        <div class="score-area" id="scoreArea" style="cursor: pointer;">
             SCORE: <span class="score-value" id="scoreValue">0</span>%
         </div>
         
-        <div class="result-verdict" id="resultVerdict" style="display: none;"></div>
+        <div class="result-verdict" id="resultVerdict" style="display: none; cursor: pointer;"></div>
     </div>
     
-    <script src="{{ url_for('static', filename='js/letter_mode.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_config.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_url.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_sequence.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_canvas.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_storage.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/letter_mode_main.js') }}"></script>
 </body>
 </html>

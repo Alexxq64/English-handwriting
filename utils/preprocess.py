@@ -1,6 +1,5 @@
 import numpy as np
 import cv2
-from utils.preprocessing import preprocess_canvas_image
 
 
 def preprocess_from_canvas(image_bytes, img_size=28):

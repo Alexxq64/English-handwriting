@@ -20,8 +20,10 @@ tf.get_logger().setLevel('ERROR')
 from utils.label_mapping import get_symbol
 from utils.image_utils import decode_base64_image
 from utils.predict import predict_letter
+from routes import bp
 
 app = Flask(__name__)
+app.register_blueprint(bp)
 
 print("Загрузка модели...", flush=True)
 model = load_model('models/cnn_model.keras')
@@ -106,6 +108,24 @@ def predict():
     except Exception as e:
         print(f"[ERROR] {str(e)}", flush=True)
         return jsonify({'error': str(e)}), 500
+    
+
+from utils.storage import load_storage, update_best_attempt
+
+@app.route('/save_attempt', methods=['POST'])
+def save_attempt():
+    data = request.get_json()
+    update_best_attempt(
+        data['category'],
+        data['key'],
+        data.get('subkey'),
+        data['image'],
+        data['score'],
+        data['predicted']
+    )
+    return jsonify({'status': 'ok'})
+
+# Маршрут /best_attempts вынесен в routes/best_attempts.py
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)

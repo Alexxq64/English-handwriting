@@ -1,0 +1,191 @@
+/* static/css/best_attempts.css */
+
+.best-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #333;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: #e0e0e0;
+    border-radius: 4px;
+}
+
+.back-link:hover {
+    background: #ccc;
+}
+
+/* Заголовок страницы — мельче и по центру */
+.page-title {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin: 10px 0 30px 0;
+}
+
+/* Сводка — два блока в строку одинаковой высоты */
+.summary-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 40px;
+    align-items: stretch;
+}
+
+.summary-section-best,
+.summary-section-avg {
+    flex: 1;
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 15px 20px;
+    border-left: 4px solid #e67e22;
+    display: flex;
+    flex-direction: column;
+}
+
+.summary-section-avg {
+    border-left-color: #3498db;
+}
+
+/* Заголовки блоков — по центру */
+.summary-title {
+    margin: 0 0 15px 0;
+    font-size: 14px;
+    color: #555;
+    text-align: center;
+}
+
+.weak-cards-inline {
+    display: flex;
+    gap: 15px;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.weak-card-small {
+    text-align: center;
+    background: white;
+    border-radius: 8px;
+    padding: 8px 12px;
+    min-width: 70px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.weak-symbol-small {
+    display: block;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Caveat', cursive;
+}
+
+.weak-score-small {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    color: #e67e22;
+    margin-top: 4px;
+}
+
+.summary-section-avg .weak-score-small {
+    color: #3498db;
+}
+
+/* Таблица */
+.table-title {
+    font-size: 18px;
+    margin: 20px 0 15px 0;
+}
+
+.best-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+.best-table th,
+.best-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.best-table th {
+    background: #f0f0f0;
+    font-weight: bold;
+}
+
+/* Столбец Символ — уменьшенная ширина */
+.col-symbol {
+    width: 60px;
+}
+
+.symbol-cell {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: 'Caveat', cursive;
+    background: #fafafa;
+    width: 60px;
+}
+
+/* Столбец Частые ошибки — уменьшенная ширина */
+.col-errors {
+    width: 150px;
+}
+
+.confusion-cell {
+    text-align: left;
+    width: 150px;
+}
+
+/* Ячейка с картинкой — горизонтальное расположение */
+.sample-cell {
+    width: 120px;
+}
+
+.sample-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.sample-img {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    width: 80px;
+    height: 80px;
+}
+
+.sample-score {
+    font-size: 14px;
+    font-weight: bold;
+    color: #2ecc71;
+    min-width: 40px;
+}
+
+.sample-empty {
+    color: #ccc;
+    font-size: 20px;
+}
+
+/* Теги ошибок */
+.confusion-tag {
+    display: inline-block;
+    background: #ffe0b3;
+    padding: 3px 8px;
+    border-radius: 15px;
+    margin: 2px;
+    font-size: 11px;
+}
+
+.no-errors {
+    color: #2ecc71;
+    font-size: 12px;
+}

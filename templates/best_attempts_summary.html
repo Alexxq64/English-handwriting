@@ -1,0 +1,84 @@
+<!-- СВОДКА: худшие результаты -->
+<div class="summary-row">
+    <div class="summary-section summary-section-best">
+        <h3 class="summary-title">📊 Худший лучший результат</h3>
+        <div class="weak-cards-inline">
+            {% set all_items = [] %}
+            
+            {% for letter, data in storage.letters.items() %}
+                {% for case in ['upper', 'lower'] %}
+                    {% if case in data and data[case].best|length > 0 %}
+                        {% set best_score = data[case].best[0].score %}
+                        {% set _ = all_items.append({
+                            'symbol': letter if case == 'upper' else letter.lower(),
+                            'score': best_score,
+                            'type': 'letter',
+                            'case': case
+                        }) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            
+            {% for digit, data in storage.digits.items() %}
+                {% if data.best|length > 0 %}
+                    {% set best_score = data.best[0].score %}
+                    {% set _ = all_items.append({
+                        'symbol': digit,
+                        'score': best_score,
+                        'type': 'digit',
+                        'case': null
+                    }) %}
+                {% endif %}
+            {% endfor %}
+            
+            {% set sorted_items = all_items|sort(attribute='score') %}
+            {% for item in sorted_items[:6] %}
+                <div class="weak-card-small" style="cursor: pointer;" onclick="location.href='/letter/{{ item.symbol }}?exact={{ item.symbol }}&from=best'">
+                    <span class="weak-symbol-small">{{ item.symbol }}</span>
+                    <span class="weak-score-small">{{ item.score }}%</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="summary-section summary-section-avg">
+        <h3 class="summary-title">📊 Худший средний результат</h3>
+        <div class="weak-cards-inline">
+            {% set all_avg = [] %}
+            
+            {% for letter, data in storage.letters.items() %}
+                {% for case in ['upper', 'lower'] %}
+                    {% if case in data and data[case].best|length > 0 %}
+                        {% set avg_score = data[case].avg_score %}
+                        {% set _ = all_avg.append({
+                            'symbol': letter if case == 'upper' else letter.lower(),
+                            'avg_score': avg_score,
+                            'type': 'letter',
+                            'case': case
+                        }) %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+            
+            {% for digit, data in storage.digits.items() %}
+                {% if data.best|length > 0 %}
+                    {% set avg_score = data.avg_score %}
+                    {% set _ = all_avg.append({
+                        'symbol': digit,
+                        'avg_score': avg_score,
+                        'type': 'digit',
+                        'case': null
+                    }) %}
+                {% endif %}
+            {% endfor %}
+            
+            {% set sorted_avg = all_avg|sort(attribute='avg_score') %}
+            {% for item in sorted_avg[:6] %}
+                <div class="weak-card-small" style="cursor: pointer;" onclick="location.href='/letter/{{ item.symbol }}?exact={{ item.symbol }}&from=best'">
+                    <span class="weak-symbol-small">{{ item.symbol }}</span>
+                    <span class="weak-score-small">{{ item.avg_score }}%</span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
